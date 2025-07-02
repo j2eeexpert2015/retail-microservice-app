@@ -14,16 +14,6 @@ public class ProductController {
     public String getProductDetails(@RequestParam(name = "productId", required = true) String productId) {
         logger.info("Received request for product details: {}", productId);
 
-        // Simulate product lookup
-        try {
-            logger.debug("Simulating product lookup for {}", productId);
-            Thread.sleep(20);
-        } catch (InterruptedException e) {
-            logger.error("Product lookup interrupted for {}", productId, e);
-            Thread.currentThread().interrupt();
-            return "Error processing product lookup";
-        }
-
         String response = "Product " + productId + ": Retail Item, Price $99.99";
         logger.info("Returning product details: {}", response);
         return response;
