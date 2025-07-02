@@ -41,16 +41,16 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/health")
-    public String healthCheck() {
-        try {
-            String productHealth = restClient.get()
-                    .uri("/product/health")
-                    .retrieve()
-                    .body(String.class);
-            return "Order Service is UP. Product Service: " + productHealth;
-        } catch (Exception e) {
-            return "Order Service is UP but cannot connect to Product Service";
-        }
+    @GetMapping("/thread-info")
+    public ResponseEntity<String> getThreadInfo() {
+        Thread currentThread = Thread.currentThread();
+        String info = String.format(
+                "Current Thread: %s%nIs Virtual: %s%nClass: %s%nActive Threads: %d",
+                currentThread.getName(),
+                currentThread.isVirtual(),
+                currentThread.getClass().getName(),
+                Thread.activeCount()
+        );
+        return ResponseEntity.ok(info);
     }
 }
