@@ -18,6 +18,7 @@
     <modules>
         <module>retail-order-service</module>
         <module>retail-product-service</module>
+        <module>gatling-load-tests</module>
     </modules>
 
 </project>
